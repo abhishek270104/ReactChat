@@ -109,17 +109,20 @@ const Detail = () => {
             <img src="./arrowUp.png" alt="" />
           </div>
         </div>
-        <button onClick={handleBlock}>
-          {isCurrentUserBlocked
-            ? "You are Blocked!"
-            : isReceiverBlocked
+      </div>
+      <div className="sticky-footer">
+      <button onClick={handleBlock}>
+        {isCurrentUserBlocked
+          ? "You are Blocked!"
+          : isReceiverBlocked
             ? "User blocked"
             : "Block User"}
-        </button>
-        <button className="logout" onClick={handleLogout}>
-          Logout
-        </button>
+      </button>
+      <button className="logout" onClick={handleLogout}>
+        Logout
+      </button>
       </div>
+      
     </div>
   );
 };

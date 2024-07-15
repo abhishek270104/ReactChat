@@ -109,7 +109,7 @@ const ChatList = () => {
                 ? "User"
                 : chat.user.username}
             </span>
-            <p>{chat.lastMessage}</p>
+            <p>{chat.lastMessage.length > 40 ? `${chat.lastMessage.substring(0, 40)}...` : chat.lastMessage}</p>
           </div>
         </div>
       ))}

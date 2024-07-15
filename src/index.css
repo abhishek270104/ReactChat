@@ -7,12 +7,19 @@
 }
 
 body {
-  background-image: url("/bg.jpg");
+  background-image: url("/back.jpg");
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
   color: white;
+}
+::-webkit-scrollbar{
+  width: 5px;
+  height: 100%;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .container {
@@ -23,6 +30,7 @@ body {
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.125);
   display: flex;
+  /* flex-wrap: wrap; */
 }
 
 .loading{

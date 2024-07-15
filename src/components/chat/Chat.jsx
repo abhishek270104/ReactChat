@@ -30,8 +30,10 @@ const Chat = () => {
   const endRef = useRef(null);
 
   useEffect(() => {
-    endRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [chat.messages]);
+    if (chat?.messages !== undefined) {
+      endRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [chat?.messages]);
 
   useEffect(() => {
     const unSub = onSnapshot(doc(db, "chats", chatId), (res) => {
@@ -58,7 +60,7 @@ const Chat = () => {
   };
 
   const handleSend = async () => {
-    if (text === "") return;
+    if (text === "" && img.url === "") return;
 
     let imgUrl = null;
 
@@ -137,7 +139,7 @@ const Chat = () => {
           >
             <div className="texts">
               {message.img && <img src={message.img} alt="" />}
-              <p>{message.text}</p>
+              {message.text && <p>{message.text}</p>}
               <span>{format(message.createdAt.toDate())}</span>
             </div>
           </div>
