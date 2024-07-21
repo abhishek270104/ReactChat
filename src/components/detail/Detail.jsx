@@ -4,7 +4,8 @@ import { auth, db } from "../../lib/firebase";
 import { useUserStore } from "../../lib/userStore";
 import "./detail.css";
 
-const Detail = () => {
+const Detail = ({...props}) => {
+  const {setIsDetail} = props;
   const { chatId, user, isCurrentUserBlocked, isReceiverBlocked, changeBlock, resetChat } =
     useChatStore();
   const { currentUser } = useUserStore();
@@ -31,6 +32,7 @@ const Detail = () => {
 
   return (
     <div className="detail">
+      <div className="crossIcon" onClick={() => setIsDetail(false)}>x</div>
       <div className="user">
         <img src={user?.avatar || "./avatar.png"} alt="" />
         <h2>{user?.username}</h2>

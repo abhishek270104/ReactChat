@@ -2,7 +2,16 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-
+  .crossIcon{
+    font-size: 15px;
+    font-weight: 700;
+    padding: 6px 4px;
+    cursor: pointer;
+    border-radius: 50%;
+    :hover{
+      background-color: darkgrey;
+    }
+  }
   .user {
     padding: 30px 20px;
     display: flex;

@@ -14,7 +14,8 @@ import { useUserStore } from "../../lib/userStore";
 import upload from "../../lib/upload";
 import { format } from "timeago.js";
 
-const Chat = () => {
+const Chat = ({...props}) => {
+  const {isDetail, setIsDetail} = props;
   const [chat, setChat] = useState();
   const [open, setOpen] = useState(false);
   const [text, setText] = useState("");
@@ -58,6 +59,9 @@ const Chat = () => {
       });
     }
   };
+  const handleDetail = () => {
+    setIsDetail(true);
+  }
 
   const handleSend = async () => {
     if (text === "" && img.url === "") return;
@@ -117,7 +121,9 @@ const Chat = () => {
     <div className="chat">
       <div className="top">
         <div className="user">
-          <img src={user?.avatar || "./avatar.png"} alt="" />
+          <img src={user?.avatar || "./avatar.png"} alt="" onClick={() => {
+            console.log("sjjsjsj")
+            handleDetail()}}/>
           <div className="texts">
             <span>{user?.username}</span>
             <p>Lorem ipsum dolor, sit amet.</p>

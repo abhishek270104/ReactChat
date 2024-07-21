@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Chat from "./components/chat/Chat";
 import Detail from "./components/detail/Detail";
 import List from "./components/list/List";
@@ -12,7 +12,7 @@ import { useChatStore } from "./lib/chatStore";
 const App = () => {
   const { currentUser, isLoading, fetchUserInfo } = useUserStore();
   const { chatId } = useChatStore();
-
+  const [isDetail, setIsDetail]= useState(false);
   useEffect(() => {
     const unSub = onAuthStateChanged(auth, (user) => {
       fetchUserInfo(user?.uid);
@@ -30,8 +30,8 @@ const App = () => {
       {currentUser ? (
         <>
           <List />
-          {chatId && <Chat />}
-          {chatId && <Detail />}
+          {chatId && <Chat setIsDetail={setIsDetail}/>}
+          {(chatId && isDetail) ? <Detail setIsDetail={setIsDetail}/> : null}
         </>
       ) : (
         <Login />
